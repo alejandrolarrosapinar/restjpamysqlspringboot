@@ -35,6 +35,9 @@ public class Service {
 	}
 
 	public void insertarCliente(Tcliente cliente) {
+		if(!em.isOpen()) {
+			em = emf.createEntityManager();
+		}
 		em.getTransaction().begin();
 		em.persist(cliente);
 		em.getTransaction().commit();
@@ -58,6 +61,9 @@ public class Service {
 			cliente.addTpedido(p);
 		}
 		insertarCliente(cliente);*/
+		if(!em.isOpen()) {
+			em = emf.createEntityManager();
+		}
 		em.getTransaction().begin();
 		for(Tpedido p : listaPedidos) {
 			p.setTcliente(cliente);
@@ -68,15 +74,35 @@ public class Service {
 	}
 
 	public List<Tusuario> obtenerUsuarios() {
+		if(!em.isOpen()) {
+			em = emf.createEntityManager();
+		}
 		return (List<Tusuario>)em.createQuery("FROM Tusuario").getResultList();
 	}
 
 	public List<Tpedido> obtenerPedidos() {
+		if(!em.isOpen()) {
+			em = emf.createEntityManager();
+		}
 		return (List<Tpedido>)em.createQuery("FROM Tpedido").getResultList();
 
 	}
 
 	public List<Tcliente> obtenerClientes() {
+		if(!em.isOpen()) {
+			em = emf.createEntityManager();
+		}
 		return (List<Tcliente>)em.createQuery("FROM Tcliente").getResultList();
 	}
+
+	public void insertarPedido(Tpedido pedido) {
+		
+		em.getTransaction().begin();
+		em.persist(pedido);
+		em.getTransaction().commit();
+		em.close();
+		
+	}
+	
+
 }

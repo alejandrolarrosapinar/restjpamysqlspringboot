@@ -3,6 +3,8 @@ package jpa.controller;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import jpa.domain.Tcliente;
@@ -27,11 +29,22 @@ public class Controlador {
 	
 	@GetMapping("/obtenerClientes")
 	public List<Tcliente> obtenerClientes() {
+		
 		return servicio.obtenerClientes();
 	}
 	
 	@GetMapping("/obtenerPedidos")
 	public List<Tpedido> obtenerPedidos(){
 		return servicio.obtenerPedidos();
+	}
+	
+	@PostMapping("/insertarPedido")
+	public void insertarPedido(@RequestBody Tpedido pedido){
+		servicio.insertarPedido(pedido);
+	}
+	
+	@PostMapping("/insertarCliente")
+	public void insertarCliente(@RequestBody Tcliente cliente){
+		servicio.insertarCliente(cliente);
 	}
 }

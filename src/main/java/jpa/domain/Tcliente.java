@@ -37,7 +37,7 @@ public class Tcliente implements Serializable {
 	private String nombre;
 
 	//bi-directional many-to-one association to Tpedido
-	@OneToMany(mappedBy="tcliente", fetch=FetchType.EAGER, cascade = CascadeType.PERSIST)
+	@OneToMany(mappedBy="tcliente", fetch=FetchType.EAGER, cascade = CascadeType.REFRESH)
 	private List<Tpedido> tpedidos;
 
 	public Tcliente(String nombre, String apellido1, String apellido2) {

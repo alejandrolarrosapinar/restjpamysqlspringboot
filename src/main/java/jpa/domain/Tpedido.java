@@ -14,7 +14,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import jpa.Util.Util;
 
@@ -39,7 +40,7 @@ public class Tpedido implements Serializable {
 	//bi-directional many-to-one association to Tcliente
 	@ManyToOne
 	@JoinColumn(name="idcliente")
-	@JsonIgnore
+	@JsonProperty(access = Access.WRITE_ONLY)
 	private Tcliente tcliente;
 
 	public Tpedido() {
@@ -61,6 +62,7 @@ public class Tpedido implements Serializable {
 		this.fecha = fecha;
 	}
 
+	
 	public Tcliente getTcliente() {
 		return this.tcliente;
 	}
