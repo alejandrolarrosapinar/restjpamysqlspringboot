@@ -1,0 +1,7 @@
+jpa\Util\Util.class
+jpa\domain\Tpedido.class
+jpa\service\Service.class
+jpa\jpaEjemplo\App.class
+jpa\domain\Tcliente.class
+jpa\controller\Controlador.class
+jpa\domain\Tusuario.class
