@@ -7,3 +7,5 @@
 - insertarCliente
 - actualizarCliente
 - logging
+
+![Captura](https://github.com/alejandrolarrosapinar/restjpamysqlspringboot/blob/master/captura.png "El cliente queda así")
