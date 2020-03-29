@@ -19,25 +19,6 @@ import jpa.domain.Tcliente;
 public class App {
 	public static void main(String[] args) {
 		SpringApplication.run(App.class, args);
-		/*Service servicio = new Service();
-		
-
-		//servicio.insertarCliente(cliente);
-		Tcliente cliente = servicio.obtenerClienteById(10);
-		
-		Tpedido pedido = new Tpedido();
-		pedido.setFecha(Calendar.getInstance().getTime());
-		cliente.addTpedido(pedido);
-		pedido = new Tpedido();
-		pedido.setFecha(obtenerFecha(01, 04, 1994));
-		pedido.setTcliente(cliente);
-		cliente.addTpedido(pedido);
-		
-		servicio.insertarCliente(cliente);
-		
-		
-		servicio.cerrarEntityManager();*/
-		
 	}
 	
 	private static void insertarCliente() {

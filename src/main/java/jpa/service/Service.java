@@ -4,8 +4,11 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+
+import org.hibernate.SessionFactory;
 
 import jpa.domain.Tcliente;
 import jpa.domain.Tpedido;
@@ -40,6 +43,17 @@ public class Service {
 		}
 		em.getTransaction().begin();
 		em.persist(cliente);
+		em.close();
+		em.getTransaction().commit();
+	}
+	
+	public void actualizarCliente(Tcliente cliente) {
+		if(!em.isOpen()) {
+			em = emf.createEntityManager();
+		}
+		em.getTransaction().begin();
+		em.merge(cliente);
+		em.close();
 		em.getTransaction().commit();
 	}
 	
@@ -104,6 +118,17 @@ public class Service {
 		em.getTransaction().commit();
 		em.close();
 		
+	}
+
+	public Tusuario logging(Tusuario usuario) {
+		Query query =em.createQuery("FROM Tusuario where login = :login and pass=:pass");
+		query.setParameter("login", usuario.getLogin());
+		query.setParameter("pass", usuario.getPass());
+		try {
+			return (Tusuario) query.getSingleResult();
+		}catch(NoResultException ex) {
+			return null;
+		}
 	}
 	
 
