@@ -111,6 +111,7 @@ public class Service {
 
 	public void insertarPedido(Tpedido pedido) {
 		if(!em.isOpen()) {
+			
 			em=emf.createEntityManager();
 		}
 		em.getTransaction().begin();
