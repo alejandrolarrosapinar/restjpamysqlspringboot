@@ -41,6 +41,7 @@ public class Controlador {
 	}
 	
 	@PostMapping("/insertarPedido")
+	@CrossOrigin(origins = "http://localhost:4200")
 	public void insertarPedido(@RequestBody Tpedido pedido){
 		servicio.insertarPedido(pedido);
 	}
